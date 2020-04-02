@@ -1,30 +1,39 @@
 import React, { Component } from "react";
+import OneBlog from "./OneBlog";
 
 class CoronaBlog extends Component {
   state = {
     blog: []
   };
 
-  getInfo = async () => {
+  async getInfo() {
     const response = await fetch("http://localhost:3000/all");
-    const blog = await response.json();
-    return blog;
-  };
+    const data = await response.json();
+    console.log("returned:", data);
+    return data;
+  }
 
   async componentDidMount() {
-    const blog = await this.getInfo();
+    const apiblog = await this.getInfo();
 
     this.setState({
-      blog: blog
+      blog: apiblog
     });
   }
+
   render() {
     const { blog } = this.state;
-
+    console.log("blog:", blog);
     return (
       <div>
-        <p>{blog.blogger}</p>
-        <p>{blog.blogpost}</p>
+        {blog.map((post, index) => (
+          <div>
+            <p>
+              blog date: {blog[index].date_blogpost} blog name:
+              {blog[index].blog_name}blog post: {blog[index].blogpost}
+            </p>
+          </div>
+        ))}
       </div>
     );
   }
