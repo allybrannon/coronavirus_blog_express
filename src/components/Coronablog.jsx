@@ -26,19 +26,20 @@ class CoronaBlog extends Component {
     console.log("blog:", blog);
     return (
       <div>
-        {blog.map((post, index) => (
-          <div>
-            <p className="blogDate">blog date: {blog[index].date_blogpost}</p>
-            <p className="blogName">
-              <strong>blog title: </strong>
-              {blog[index].blog_name}
-            </p>
-            <p className="blogPost">
-              <strong>blog post:</strong> {blog[index].blogpost}
-            </p>
-            <br />
-          </div>
-        ))}
+        <ul>
+          {blog.length > 0 ? (
+            blog.map((blog) => (
+              <li key={blog.id}>
+                <br />
+                <Link className="links" to={`/blog/${blog.id}`}>
+                  {blog.blog_name} {blog.date_blogpost}
+                </Link>
+              </li>
+            ))
+          ) : (
+            <li>No Issue Data</li>
+          )}
+        </ul>
       </div>
     );
   }

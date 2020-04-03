@@ -27,9 +27,9 @@ class OneBlog extends Component {
       <div>
         {blogs.map((blog) => (
           <p key={blog.id}>
-            {blog.blogpost}
-            <br />
             {blog.date_blogpost}
+            <br />
+            {blog.blogpost}
           </p>
         ))}
       </div>
