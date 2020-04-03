@@ -28,6 +28,13 @@
   color: #61dafb;
 }
 
+.blogDate {
+  font-weight: bold;
+}
+
+.blogPost {
+  font-style: italic;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

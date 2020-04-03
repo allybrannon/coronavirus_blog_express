@@ -1,8 +1,40 @@
-import React from "react";
+import React, { Component } from "react";
 
-const OneBlog = props => {
-  const { blog } = props;
-  return <p> {blog.blog}</p>;
-};
+class OneBlog extends Component {
+  state = {
+    blogs: []
+  };
+
+  async getBlog() {
+    const { id } = this.props.match.params;
+    const response = await fetch(`https://localhost:3001/blog/${id}`);
+    const data = await response.json();
+    return data;
+  }
+
+  async componentDidMount() {
+    const blogs = await this.getBlog();
+
+    this.setState({
+      blogs: blogs
+    });
+  }
+
+  render() {
+    const { blogs } = this.state;
+    console.log("here's some data! ", blogs);
+    return (
+      <div>
+        {blogs.map(blog => (
+          <p key={blog.id}>
+            {blog.blogpost}
+            <br />
+            {blog.date_blogpost}
+          </p>
+        ))}
+      </div>
+    );
+  }
+}
 
 export default OneBlog;

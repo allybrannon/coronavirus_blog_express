@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import OneBlog from "./OneBlog";
+import { Link } from "react-router-dom";
 
 class CoronaBlog extends Component {
   state = {
@@ -28,10 +28,15 @@ class CoronaBlog extends Component {
       <div>
         {blog.map((post, index) => (
           <div>
-            <p>
-              blog date: {blog[index].date_blogpost} blog name:
-              {blog[index].blog_name}blog post: {blog[index].blogpost}
+            <p className="blogDate">blog date: {blog[index].date_blogpost}</p>
+            <p className="blogName">
+              <strong>blog title: </strong>
+              {blog[index].blog_name}
             </p>
+            <p className="blogPost">
+              <strong>blog post:</strong> {blog[index].blogpost}
+            </p>
+            <br />
           </div>
         ))}
       </div>
