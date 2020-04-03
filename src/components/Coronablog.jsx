@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 class CoronaBlog extends Component {
   state = {
-    blog: []
+    blog: [],
   };
 
   async getInfo() {
@@ -17,7 +17,7 @@ class CoronaBlog extends Component {
     const apiblog = await this.getInfo();
 
     this.setState({
-      blog: apiblog
+      blog: apiblog,
     });
   }
 

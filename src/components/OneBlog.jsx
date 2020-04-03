@@ -2,12 +2,12 @@ import React, { Component } from "react";
 
 class OneBlog extends Component {
   state = {
-    blogs: []
+    blogs: [],
   };
 
   async getBlog() {
     const { id } = this.props.match.params;
-    const response = await fetch(`https://localhost:3001/blog/${id}`);
+    const response = await fetch(`http://localhost:3000/blog/${id}`);
     const data = await response.json();
     return data;
   }
@@ -16,7 +16,7 @@ class OneBlog extends Component {
     const blogs = await this.getBlog();
 
     this.setState({
-      blogs: blogs
+      blogs: blogs,
     });
   }
 
@@ -25,7 +25,7 @@ class OneBlog extends Component {
     console.log("here's some data! ", blogs);
     return (
       <div>
-        {blogs.map(blog => (
+        {blogs.map((blog) => (
           <p key={blog.id}>
             {blog.blogpost}
             <br />
